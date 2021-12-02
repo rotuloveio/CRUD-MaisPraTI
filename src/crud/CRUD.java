@@ -126,7 +126,7 @@ public class CRUD {
                     int id = 0;
                     while (true) {
                         try {
-                            System.out.print("Digite o ID da pessoa/aluno a remover [0 p/ cancelar]: ");
+                            System.out.print("Digite o ID da pessoa/aluno a atualizar [0 p/ cancelar]: ");
                             id = Integer.parseInt(sc1.nextLine());
                             break;
                         } catch (NumberFormatException e) {
