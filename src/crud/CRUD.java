@@ -112,6 +112,16 @@ public class CRUD {
                 }
                 case UPDATE -> {
                     System.out.println("ATUALIZAR DADOS DE UMA PESSOA/ALUNO");
+                    System.out.format("%3s", "ID");
+                    System.out.format("%20s", "NOME");
+                    System.out.format("%15s", "TELEFONE");
+                    System.out.format("%15s", "NASCIMENTO");
+                    System.out.format("%20s", "CRIADO EM");
+                    System.out.format("%20s", "ATUALIZADO EM");
+                    System.out.format("%10s", "NOTA");
+                    System.out.println();
+                    alunos.forEach((aluno) -> printAluno(aluno));
+                    pessoas.forEach((pessoa) -> printPessoa(pessoa));
                     found = false;
                     int id = 0;
                     while (true) {
@@ -226,6 +236,16 @@ public class CRUD {
                 }
                 case DELETE -> {
                     System.out.println("DELETAR UMA PESSOA/ALUNO");
+                    System.out.format("%3s", "ID");
+                    System.out.format("%20s", "NOME");
+                    System.out.format("%15s", "TELEFONE");
+                    System.out.format("%15s", "NASCIMENTO");
+                    System.out.format("%20s", "CRIADO EM");
+                    System.out.format("%20s", "ATUALIZADO EM");
+                    System.out.format("%10s", "NOTA");
+                    System.out.println();
+                    alunos.forEach((aluno) -> printAluno(aluno));
+                    pessoas.forEach((pessoa) -> printPessoa(pessoa));
                     found = false;
                     int id = 0;
                     while (true) {
@@ -262,8 +282,10 @@ public class CRUD {
             if (option == EXIT) {
                 System.out.println("Obrigado por usar o CRUD.");
             }
-            System.out.print("Pressione enter para continuar.");
-            sc1.nextLine();
+            if (option >= CREATE && option <= DELETE) {
+                System.out.print("Pressione enter para continuar.");
+                sc1.nextLine();
+            }
         }
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
