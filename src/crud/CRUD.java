@@ -1,5 +1,6 @@
 package crud;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -19,7 +20,7 @@ public class CRUD {
     final static int DELETE = 4;
     final static int EXIT = 5;
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, IOException, InterruptedException {
         ArrayList<Aluno> alunos = new ArrayList<>();
         ArrayList<Pessoa> pessoas = new ArrayList<>();
 
@@ -31,7 +32,9 @@ public class CRUD {
         Scanner sc1 = new Scanner(System.in);
         int option = 0;
         while (option != EXIT) {
-            System.out.println("\nCRUD simples do Romulo Ramos Pereira");
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
+            System.out.println("CRUD SIMPLES DO ROMULO RAMOS PEREIRA");
             System.out.println("Selecione uma opcao:");
             System.out.println("[1] Cadastrar uma pessoa/aluno");
             System.out.println("[2] Listar pessoas/alunos cadastrados");
@@ -46,8 +49,11 @@ public class CRUD {
             } catch (NumberFormatException e) {
             }
 
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+
             switch (option) {
                 case CREATE -> {
+                    System.out.println("CADASTRAR UMA PESSOA/ALUNO");
                     String name = "";
                     do {
                         System.out.print("Digite o nome: ");
@@ -92,6 +98,7 @@ public class CRUD {
                 }
 
                 case READ -> {
+                    System.out.println("LISTAR PESSOAS/ALUNOS CADASTRADOS");
                     System.out.format("%3s", "ID");
                     System.out.format("%20s", "NOME");
                     System.out.format("%15s", "TELEFONE");
@@ -104,6 +111,7 @@ public class CRUD {
                     pessoas.forEach((pessoa) -> printPessoa(pessoa));
                 }
                 case UPDATE -> {
+                    System.out.println("ATUALIZAR DADOS DE UMA PESSOA/ALUNO");
                     found = false;
                     int id = 0;
                     while (true) {
@@ -217,6 +225,7 @@ public class CRUD {
                     }
                 }
                 case DELETE -> {
+                    System.out.println("DELETAR UMA PESSOA/ALUNO");
                     found = false;
                     int id = 0;
                     while (true) {
@@ -250,7 +259,13 @@ public class CRUD {
                     }
                 }
             }
+            if (option == EXIT) {
+                System.out.println("Obrigado por usar o CRUD.");
+            }
+            System.out.print("Pressione enter para continuar.");
+            sc1.nextLine();
         }
+        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
     public static void printAluno(Aluno aluno) {
