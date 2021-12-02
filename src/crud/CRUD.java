@@ -43,7 +43,7 @@ public class CRUD {
             option = 0;
             try {
                 option = Integer.parseInt(sc1.nextLine());
-            } catch (Exception e) {
+            } catch (NumberFormatException e) {
             }
 
             switch (option) {
@@ -66,12 +66,12 @@ public class CRUD {
                             String sbirth = sc1.nextLine();
                             birth = birthFormatter.parse(sbirth);
                             break;
-                        } catch (Exception e) {
+                        } catch (ParseException e) {
                         }
                     }
-                    System.out.print("Deseja informar nota final [S/N]: ");
                     String nota = "";
                     while (!("S".equals(nota) || "N".equals(nota))) {
+                        System.out.print("Deseja informar nota final [S/N]: ");
                         nota = sc1.nextLine();
                     }
                     if ("S".equals(nota)) {
@@ -80,7 +80,7 @@ public class CRUD {
                             try {
                                 System.out.print("Nota final: ");
                                 grade = Float.parseFloat(sc1.nextLine());
-                            } catch (Exception e) {
+                            } catch (NumberFormatException e) {
                             }
                         }
                         Aluno tempAluno = new Aluno(name, tel, birth, now, now, grade);
@@ -111,7 +111,7 @@ public class CRUD {
                             System.out.print("Digite o ID da pessoa/aluno a remover [0 p/ cancelar]: ");
                             id = Integer.parseInt(sc1.nextLine());
                             break;
-                        } catch (Exception e) {
+                        } catch (NumberFormatException e) {
                         }
                     }
                     itrAluno = alunos.iterator();
@@ -121,13 +121,13 @@ public class CRUD {
                         Aluno tempAluno = itrAluno.next();
                         if (id == tempAluno.getId()) {
                             found = true;
-                            System.out.print("Digite o novo nome [deixe em branco para não alterar]: ");
+                            System.out.print("Digite o novo nome [deixe em branco para nao alterar]: ");
                             String newName = sc1.nextLine();
                             if (!(newName.isEmpty())) {
                                 tempAluno.setName(newName);
                                 updated = true;
                             }
-                            System.out.print("Digite o novo telefone (somente digitos) [deixe em branco para não alterar]: ");
+                            System.out.print("Digite o novo telefone (somente digitos) [deixe em branco para nao alterar]: ");
                             String newTel = sc1.nextLine();
                             if (!(newTel.isEmpty())) {
                                 tempAluno.setTel(newTel);
@@ -136,7 +136,7 @@ public class CRUD {
                             Date newBirth = new Date();
                             while (true) {
                                 try {
-                                    System.out.print("Digite a nova data de nascimento [dd/mm/aa] [deixe em branco para não alterar]: ");
+                                    System.out.print("Digite a nova data de nascimento [dd/mm/aa] [deixe em branco para nao alterar]: ");
                                     String newSbirth = sc1.nextLine();
                                     if (newSbirth.isEmpty()) {
                                         break;
@@ -145,14 +145,14 @@ public class CRUD {
                                     tempAluno.setBirth(newBirth);
                                     updated = true;
                                     break;
-                                } catch (Exception e) {
+                                } catch (ParseException e) {
                                 }
                             }
                             now = new Date();
                             float newGrade = -1;
                             while (newGrade == -1) {
                                 try {
-                                    System.out.print("Digite a nova nota final [deixe em branco para não alterar]: ");
+                                    System.out.print("Digite a nova nota final [deixe em branco para nao alterar]: ");
                                     String sgrade = sc1.nextLine();
                                     if (sgrade.isEmpty()) {
                                         break;
@@ -160,55 +160,55 @@ public class CRUD {
                                     newGrade = Float.parseFloat(sgrade);
                                     tempAluno.setGrade(newGrade);
                                     updated = true;
-                                } catch (Exception e) {
+                                } catch (NumberFormatException e) {
                                 }
                             }
                             if (updated) {
                                 System.out.println(tempAluno.getName() + " atualizado com sucesso.");
                                 tempAluno.setUpdate(now);
                             } else {
-                                System.out.println("Nenhuma alteração feita.");
+                                System.out.println("Nenhuma alteracao feita.");
                             }
                         }
-                        itrPessoa = pessoas.iterator();
-                        while (itrPessoa.hasNext()) {
-                            Pessoa tempPessoa = itrPessoa.next();
-                            if (id == tempPessoa.getId()) {
-                                found = true;
-                                System.out.print("Digite o novo nome [deixe em branco para não alterar]: ");
-                                String newName = sc1.nextLine();
-                                if (!(newName.isEmpty())) {
-                                    tempPessoa.setName(newName);
-                                    updated = true;
-                                }
-                                System.out.print("Digite o novo telefone (somente digitos) [deixe em branco para não alterar]: ");
-                                String newTel = sc1.nextLine();
-                                if (!(newTel.isEmpty())) {
-                                    tempPessoa.setTel(newTel);
-                                    updated = true;
-                                }
-                                Date newBirth = new Date();
-                                while (true) {
-                                    try {
-                                        System.out.print("Digite a nova data de nascimento [dd/mm/aa] [deixe em branco para não alterar]: ");
-                                        String newSbirth = sc1.nextLine();
-                                        if (newSbirth.isEmpty()) {
-                                            break;
-                                        }
-                                        newBirth = birthFormatter.parse(newSbirth);
-                                        tempPessoa.setBirth(newBirth);
-                                        updated = true;
+                    }
+                    itrPessoa = pessoas.iterator();
+                    while (itrPessoa.hasNext()) {
+                        Pessoa tempPessoa = itrPessoa.next();
+                        if (id == tempPessoa.getId()) {
+                            found = true;
+                            System.out.print("Digite o novo nome [deixe em branco para nao alterar]: ");
+                            String newName = sc1.nextLine();
+                            if (!(newName.isEmpty())) {
+                                tempPessoa.setName(newName);
+                                updated = true;
+                            }
+                            System.out.print("Digite o novo telefone (somente digitos) [deixe em branco para nao alterar]: ");
+                            String newTel = sc1.nextLine();
+                            if (!(newTel.isEmpty())) {
+                                tempPessoa.setTel(newTel);
+                                updated = true;
+                            }
+                            Date newBirth = new Date();
+                            while (true) {
+                                try {
+                                    System.out.print("Digite a nova data de nascimento [dd/mm/aa] [deixe em branco para nao alterar]: ");
+                                    String newSbirth = sc1.nextLine();
+                                    if (newSbirth.isEmpty()) {
                                         break;
-                                    } catch (Exception e) {
                                     }
+                                    newBirth = birthFormatter.parse(newSbirth);
+                                    tempPessoa.setBirth(newBirth);
+                                    updated = true;
+                                    break;
+                                } catch (ParseException e) {
                                 }
-                                now = new Date();
-                                if (updated) {
-                                    System.out.println(tempPessoa.getName() + " atualizado com sucesso.");
-                                    tempPessoa.setUpdate(now);
-                                } else {
-                                    System.out.println("Nenhuma alteração feita.");
-                                }
+                            }
+                            now = new Date();
+                            if (updated) {
+                                System.out.println(tempPessoa.getName() + " atualizado com sucesso.");
+                                tempPessoa.setUpdate(now);
+                            } else {
+                                System.out.println("Nenhuma alteracao feita.");
                             }
                         }
                     }
@@ -224,7 +224,7 @@ public class CRUD {
                             System.out.print("Digite o ID da pessoa/aluno a remover [0 p/ cancelar]: ");
                             id = Integer.parseInt(sc1.nextLine());
                             break;
-                        } catch (Exception e) {
+                        } catch (NumberFormatException e) {
                         }
                     }
                     itrAluno = alunos.iterator();
