@@ -20,10 +20,10 @@ public class CRUD {
     final static int DELETE = 4;
     final static int EXIT = 5;
 
+    static ArrayList<Aluno> alunos = new ArrayList<>();
+    static ArrayList<Pessoa> pessoas = new ArrayList<>();
+    
     public static void main(String[] args) throws ParseException, IOException, InterruptedException {
-        ArrayList<Aluno> alunos = new ArrayList<>();
-        ArrayList<Pessoa> pessoas = new ArrayList<>();
-
         Iterator<Aluno> itrAluno;
         Iterator<Pessoa> itrPessoa;
 
@@ -98,30 +98,10 @@ public class CRUD {
                 }
 
                 case READ -> {
-                    System.out.println("LISTAR PESSOAS/ALUNOS CADASTRADOS");
-                    System.out.format("%3s", "ID");
-                    System.out.format("%20s", "NOME");
-                    System.out.format("%15s", "TELEFONE");
-                    System.out.format("%15s", "NASCIMENTO");
-                    System.out.format("%20s", "CRIADO EM");
-                    System.out.format("%20s", "ATUALIZADO EM");
-                    System.out.format("%10s", "NOTA");
-                    System.out.println();
-                    alunos.forEach((aluno) -> printAluno(aluno));
-                    pessoas.forEach((pessoa) -> printPessoa(pessoa));
+                    list();
                 }
                 case UPDATE -> {
-                    System.out.println("ATUALIZAR DADOS DE UMA PESSOA/ALUNO");
-                    System.out.format("%3s", "ID");
-                    System.out.format("%20s", "NOME");
-                    System.out.format("%15s", "TELEFONE");
-                    System.out.format("%15s", "NASCIMENTO");
-                    System.out.format("%20s", "CRIADO EM");
-                    System.out.format("%20s", "ATUALIZADO EM");
-                    System.out.format("%10s", "NOTA");
-                    System.out.println();
-                    alunos.forEach((aluno) -> printAluno(aluno));
-                    pessoas.forEach((pessoa) -> printPessoa(pessoa));
+                    list();
                     found = false;
                     int id = 0;
                     while (true) {
@@ -235,17 +215,7 @@ public class CRUD {
                     }
                 }
                 case DELETE -> {
-                    System.out.println("DELETAR UMA PESSOA/ALUNO");
-                    System.out.format("%3s", "ID");
-                    System.out.format("%20s", "NOME");
-                    System.out.format("%15s", "TELEFONE");
-                    System.out.format("%15s", "NASCIMENTO");
-                    System.out.format("%20s", "CRIADO EM");
-                    System.out.format("%20s", "ATUALIZADO EM");
-                    System.out.format("%10s", "NOTA");
-                    System.out.println();
-                    alunos.forEach((aluno) -> printAluno(aluno));
-                    pessoas.forEach((pessoa) -> printPessoa(pessoa));
+                    list();
                     found = false;
                     int id = 0;
                     while (true) {
@@ -288,6 +258,20 @@ public class CRUD {
             }
         }
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+    }
+
+    public static void list() {
+        System.out.println("LISTAR PESSOAS/ALUNOS CADASTRADOS");
+        System.out.format("%3s", "ID");
+        System.out.format("%20s", "NOME");
+        System.out.format("%15s", "TELEFONE");
+        System.out.format("%15s", "NASCIMENTO");
+        System.out.format("%20s", "CRIADO EM");
+        System.out.format("%20s", "ATUALIZADO EM");
+        System.out.format("%10s", "NOTA");
+        System.out.println();
+        alunos.forEach((aluno) -> printAluno(aluno));
+        pessoas.forEach((pessoa) -> printPessoa(pessoa));
     }
 
     public static void printAluno(Aluno aluno) {
