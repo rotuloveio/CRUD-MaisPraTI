@@ -12,7 +12,10 @@ public class Pessoa {
     private Date birth;
     private Date create;
     private Date update;
+    private int id;
 
+    static int ID = 0;
+    
     public Pessoa(String name) {
         this.name = name;
     }
@@ -23,6 +26,15 @@ public class Pessoa {
         this.birth = birth;
         this.create = create;
         this.update = update;
+        this.id = ++ID;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
