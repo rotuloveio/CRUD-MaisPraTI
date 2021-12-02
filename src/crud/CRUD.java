@@ -22,7 +22,7 @@ public class CRUD {
 
     static ArrayList<Aluno> alunos = new ArrayList<>();
     static ArrayList<Pessoa> pessoas = new ArrayList<>();
-    
+
     public static void main(String[] args) throws ParseException, IOException, InterruptedException {
         Iterator<Aluno> itrAluno;
         Iterator<Pessoa> itrPessoa;
@@ -98,9 +98,11 @@ public class CRUD {
                 }
 
                 case READ -> {
+                    System.out.println("LISTAR PESSOAS/ALUNOS CADASTRADOS");
                     list();
                 }
                 case UPDATE -> {
+                    System.out.println("ATUALIZAR DADOS DE UMA PESSOA/ALUNO");
                     list();
                     found = false;
                     int id = 0;
@@ -215,6 +217,7 @@ public class CRUD {
                     }
                 }
                 case DELETE -> {
+                    System.out.println("DELETAR UMA PESSOA/ALUNO");
                     list();
                     found = false;
                     int id = 0;
@@ -261,7 +264,6 @@ public class CRUD {
     }
 
     public static void list() {
-        System.out.println("LISTAR PESSOAS/ALUNOS CADASTRADOS");
         System.out.format("%3s", "ID");
         System.out.format("%20s", "NOME");
         System.out.format("%15s", "TELEFONE");
