@@ -34,6 +34,7 @@ public class CRUD {
             System.out.println("[5] Sair");
             System.out.print("Sua opcao: ");
 
+            option = 0;
             try {
                 option = Integer.parseInt(sc1.nextLine());
             } catch (Exception e) {
