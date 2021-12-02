@@ -13,6 +13,6 @@
 Passos para testar o projeto:
 ```
 git clone https://github.com/rotuloveio/CRUD-MaisPraTI
-cd CRUD-MaisPraTI\dist
+cd CRUD-MaisPraTI/dist
 java -jar CRUD.jar
 ```
