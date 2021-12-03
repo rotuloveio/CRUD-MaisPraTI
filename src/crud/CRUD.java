@@ -260,7 +260,6 @@ public class CRUD {
                 sc1.nextLine();
             }
         }
-        new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
 
     public static void list() {
