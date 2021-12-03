@@ -8,7 +8,8 @@
 * [x] Excluir um(a) aluno/pessoa
 
 # Tecnologias utilizadas
-* [x] Java
+* [x] Java 16
+* [x] Apache NetBeans IDE 12.5
 
 Passos para testar o projeto:
 ```
