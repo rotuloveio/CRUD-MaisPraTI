@@ -32,7 +32,11 @@ public class CRUD {
         Scanner sc1 = new Scanner(System.in);
         int option = 0;
         while (option != EXIT) {
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (IOException | InterruptedException e) {
+                Runtime.getRuntime().exec("cls"); 
+            }
 
             System.out.println("CRUD SIMPLES DO ROMULO RAMOS PEREIRA");
             System.out.println("Selecione uma opcao:");
@@ -49,7 +53,11 @@ public class CRUD {
             } catch (NumberFormatException e) {
             }
 
-            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            try {
+                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+            } catch (IOException | InterruptedException e) {
+                Runtime.getRuntime().exec("cls"); 
+            }
 
             switch (option) {
                 case CREATE -> {
