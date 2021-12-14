@@ -35,7 +35,9 @@ public class CRUD {
             try {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } catch (IOException | InterruptedException e) {
-                Runtime.getRuntime().exec("cls"); 
+                Runtime.getRuntime().exec("clear"); 
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
             }
 
             System.out.println("CRUD SIMPLES DO ROMULO RAMOS PEREIRA");
@@ -56,7 +58,9 @@ public class CRUD {
             try {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } catch (IOException | InterruptedException e) {
-                Runtime.getRuntime().exec("cls"); 
+                Runtime.getRuntime().exec("clear"); 
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
             }
 
             switch (option) {
